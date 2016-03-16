@@ -1353,7 +1353,12 @@ otherwise:
 <?php
 Mage::app()->getFrontController()->getResponse()->setRedirect($url);
 ```
-
+and:
+```php
+<?php
+ $this->_redirect('frontName/controller/action') //to redirect to a specific page.
+ $this->_redirectReferer() //to redirect back to the previous page
+ ```
 ## Pass data from controller to view
 ```php
 <?php
