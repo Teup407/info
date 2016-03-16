@@ -1445,6 +1445,12 @@ foreach($collection as $comparing_product) {
 ```php
 <?php
 $this->getProduct()->getUrlInStore()
+?>
+```
+## Get Url Path ##
+```<?php
+$this->$product->getProductUrl()
+?>
 ```
 
 ## Filter by AND
