@@ -99,19 +99,17 @@ foreach($col as $simple_product){
 
 ## Add JavaScript to page ##
 
-First approach: page.xml - you can add something like
+
+
+Preferred First approach: page.xml - you can add something like
 
 ```xml
 <action method="addJs"><script>path/to/my/file.js</script></action>
 ```
 
-Second approach: Find `page/html/head.phtml` in your theme and add the code directly to `page.html`.
+ SO SO Second approach: Find `page/html/head.phtml` in your theme and add the code directly to `page.html`.
 
-Third approach: If you look at the stock page.html mentioned above, you'll see this line
 
-```php
-<?php echo $this->getChildHtml(); ?>
-```
 
 Normally, the getChildHtml method is used to render a specific child block. However, if called with no paramater, getChildHtml will automatically render all the child blocks. That means you can add something like
 
