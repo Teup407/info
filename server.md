@@ -3,60 +3,65 @@ free –m
 Reset Tripwire
 tripwire --check --interactive
 
-update & upgrade 
+## update & upgrade ##
+```
 apt-get update && apt-get upgrade -y
+```
 
 Change Passwords
 passwd {username}
 
-** DEFINER **
-
+## DEFINER ##
+```
 sed -i 's/DEFINER=[^+]*\*/\*/g' dump.sql
-TAR The contents of a DIR
+```
+## TAR The contents of a DIR ##
+```
 tar -czvf public_html.tar.gz -C public_html .
+```
 
 
-
-** USER ADMIN UBUNTU **
-
+## USER ADMIN UBUNTU ##
+```
 adduser demoadd
 Add User To Group
 usermod -a -G groupName userName
 
 New Home Directory
 usermod  -d new_home_dir  username
-
-** PERMISSIONS **
+```
+## PERMISSIONS ##
+```
 chown –R username:www-data {site root dir}
 find /var/www/html -type d -exec chmod 755 {} \;
 find /var/www/html  -type f -exec chmod 644 {} \;
+```
 
-
-** Sharing WRITE permissions with two users **
-
+## Sharing WRITE permissions with two users ##
+```
 chgrp -R www-data /var/www/html/sitename/public_html
 find /var/www/html/sitename/public_html -type d -exec chmod g=rwxs "{}" \;
 find /var/www/html/sitename/public_html -type f -exec chmod g=rws "{}" \;
+```
 
 
-
-** htaccess **
+## htaccess ##
 
 allow htaccess to work in 14.04 
 
 nano /etc/apache2/apache2.conf
 
 change to match below
-
+```
 <Directory /var/www/>
         Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
 </Directory>
+```
 
 
-
-** Lock Down Root SSH Access To Key Only **
+## Lock Down Root SSH Access To Key Only ##
 
 edit the server's SSHd configuration /etc/ssh/sshd_config and update the following line to now read:
 
@@ -68,16 +73,20 @@ root       681  0.0  0.1  49948  2332 ?        Ss    2012   3:23 /usr/sbin/sshd 
 # kill -HUP 681
 
 
-** SCP **
+## SCP ##
 Generally, if you want to download, it will go:
 # download: remote -> local
+```
 scp user@remote_host:remote_file local_file
+```
 where local_file might actually be a directory to put the file you're copying in. To upload, it's the opposite:
 # upload: local -> remote
+```
 scp local_file user@remote_host:remote_file
+```
 If you want to copy a whole directory, you will need -r. Think of scp as like cp, except you can specify a file with user@remote_host:file as well as just local files.
 
-** SSH CONFIG FOR SFTP and Jails at EOF **
+## SSH CONFIG FOR SFTP and Jails at EOF ##
 
 Nano /etc/ssh/sshd_config
 Subsystem     sftp   internal-sftp
